@@ -1,0 +1,2 @@
+torch == 1.0.6+cpu
+fastai >= 2.0.15
