@@ -11,16 +11,12 @@ from fastai.vision.widgets import *
 
 fastai.layers.CrossEntropyLossFlat = fastai.losses.CrossEntropyLossFlat
 
-# app = Flask(__name__)
-
+app = Flask(__name__)
 
 learner = load_learner('./export.pkl', cpu=True)
 
-# model = pickle.load(open(os.path.join(path, 'export.pkl'), 'rb'))
 
-# @app.route('/', methods=['GET', 'POST'])
-
-
+@app.route('/', methods=['GET', 'POST'])
 def upload_predict():
     if request.method == "POST":
         image_file = request.files["image"]
@@ -34,5 +30,4 @@ def upload_predict():
 
 
 if __name__ == "__main__":
-    # app.run(port=12000, debug=True)
-    print("fin")
+    app.run(port=12000, debug=True)
