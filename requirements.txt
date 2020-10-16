@@ -5,3 +5,4 @@ torchvision==0.7.0+cpu
 fastai==2.0.15
 flask>=1.1.2
 ipywidgets>=7.5.1
+gunicorn>=20.0.4
