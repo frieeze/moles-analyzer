@@ -11,22 +11,24 @@ from fastai.vision.widgets import *
 
 fastai.layers.CrossEntropyLossFlat = fastai.losses.CrossEntropyLossFlat
 
-app = Flask(__name__)
-
+app = Flask(__name__, static_url_path='', static_folder='templates',
+            template_folder='templates')
 learner = load_learner('./Resnet34_dataset1_6_modele.model', cpu=True)
 
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/', methods=['GET'])
+def serve_index():
+    return render_template("index.html")
+
+
+@app.route('/', methods=['POST'])
 def upload_predict():
-    if request.method == "POST":
-        image_file = request.files["image"]
-        if image_file:
-            img = PILImage.create(image_file)
+    image_file = request.files["image"]
+    if image_file:
+        img = PILImage.create(image_file)
 
-            pred, _, _ = learner.predict(img)
-            return render_template("index.html", prediction=1, pred=pred)
-
-    return render_template("index.html", prediction=0)
+        pred, _, _ = learner.predict(img)
+        return render_template("index.html", prediction=pred)
 
 
 if __name__ == "__main__":

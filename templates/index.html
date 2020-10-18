@@ -1,10 +1,49 @@
-<!doctype html>
-<title>Upload new File</title>
-<h1>Upload new File</h1>
-<form method=post enctype=multipart/form-data>
-  <input type=file name=image>
-  <input type=submit value=Predict>
-  <br>
-  <h3>Prediction = {{prediction}}</h3>
-  <h3>Prediction = {{pred}}</h3>
-</form>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="./style.css">
+
+  <title>Mole Analyzer</title>
+</head>
+
+<body>
+  <header class="nav navbar bg-dark text-white headTitle">
+    <div>Projet d'IA Avancée</div>
+    <div>ISEN - Lille </div>
+  </header>
+
+  <div class="container">
+    <div class="row title">
+      <div class="col">
+        <h1>Mole Analyzer</h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <form method=post enctype=multipart/form-data>
+          <input type=file name=image>
+          <br><br>
+          <input type=submit value=Predict class="btn btn-success">
+        </form>
+      </div>
+    </div>
+
+    <div class="row pred">
+      <div class="col">
+        <h3>Prediction : {{prediction}}</h3>
+      </div>
+    </div>
+  </div>
+  <footer id="sticky-footer" class="py-4 bg-dark text-white">
+    <div class="container text-center">
+      <small>Copyright &copy; DOCHY Dimitri - ESPARSA Noé - SURBAYROLE Alexis</small>
+    </div>
+  </footer>
+</body>
+
+</html>
