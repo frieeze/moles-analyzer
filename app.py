@@ -13,7 +13,7 @@ fastai.layers.CrossEntropyLossFlat = fastai.losses.CrossEntropyLossFlat
 
 app = Flask(__name__)
 
-learner = load_learner('./export.pkl', cpu=True)
+learner = load_learner('./Resnet34_dataset1_6_modele.model', cpu=True)
 
 
 @app.route('/', methods=['GET', 'POST'])
