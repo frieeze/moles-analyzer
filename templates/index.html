@@ -26,10 +26,18 @@
     <div class="row">
       <div class="col">
         <form method=post enctype=multipart/form-data>
-          <input type=file name=image>
+          <!--<input type=file name=image>-->
+          <input type=file name=image id=fileElem accept=image/* style=display:none>
+          <btn href="#" class="btn btn-primary" id="fileSelect">Select Image</btn>
+          <br>
+          <br>
+          <div id="fileList">
+            <p>No files selected!</p>
+          </div>
           <br><br>
           <input type=submit value=Predict class="btn btn-success">
         </form>
+
       </div>
     </div>
 
@@ -47,3 +55,35 @@
 </body>
 
 </html>
+
+<script>
+  const fileSelect = document.getElementById("fileSelect"),
+    fileElem = document.getElementById("fileElem"),
+    fileList = document.getElementById("fileList");
+
+  fileSelect.addEventListener("click", function (e) {
+    if (fileElem) {
+      fileElem.click();
+    }
+    e.preventDefault(); // prevent navigation to "#"
+  }, false);
+
+  fileElem.addEventListener("change", handleFiles, false);
+
+  function handleFiles() {
+    console.log(this.files)
+    if (!this.files.length) {
+      fileList.innerHTML = "<p>No files selected!</p>";
+    } else {
+      fileList.innerHTML = "";
+
+      const img = document.createElement("img");
+      img.src = URL.createObjectURL(this.files[0]);
+      img.height = 120;
+      img.onload = function () {
+        URL.revokeObjectURL(this.src);
+      }
+      fileList.appendChild(img);
+    }
+  }
+</script>
