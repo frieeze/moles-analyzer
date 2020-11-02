@@ -4,6 +4,7 @@ AI course final project directed by [bdubreu](https://github.com/bdubreu)
 The aim of this project is to detect skin cancer from a mole picture. 
 
 Demo version hosted [here](https://isen--ai-project.herokuapp.com)
+> Note : demo may crash if you try to uploadbig files due to heroku's size limitation on free apps
 
 <br>
 
